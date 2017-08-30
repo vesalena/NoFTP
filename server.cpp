@@ -60,11 +60,8 @@ int main()
     // receive message
     int bytes_read, bytes_write;
     Packet output, input;
-    uint32_t crc;
     while (1)
     {
-        std::map<int, void*> packet;
-
         bytes_read = recvfrom(fd_sock, &input, sizeof(input), 0, 
             (struct sockaddr *)&addr_to, &addr_size);
         if (read_packet(bytes_read, &input)) {
