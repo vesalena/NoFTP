@@ -154,16 +154,14 @@ int main()
     std::mt19937 g(rd());
     std::shuffle(packets.begin(), packets.end(), g);
 
-    // send messages
+    // send files
     Packet input;
     for (size_t i = 0; i < packets.size(); i++) {
-
-        // get message
         Packet pkt = packets[i];
 
+        // trying to send message
         while (1) {
-
-            // send mesasge
+            
             size_t size = sizeof(pkt);
             if (pkt.seq_number == pkt.seq_total) {
                 if (pkt.id == id1)
@@ -179,6 +177,7 @@ int main()
                        ", seq_number = " << htonl(pkt.seq_number)<<
                        ", seq_total = " << htonl(pkt.seq_total) << std::endl;
             
+            // receive message
             int bytes_read = recvfrom(fd_sock, &input, sizeof(input), 0, NULL, NULL);
             if (bytes_read > 0) {
                 //std::cout << "receive packet" << std::endl;
