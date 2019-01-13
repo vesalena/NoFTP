@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <random>
 #include "packet.h"
 
 const uint64_t id1 = 0x5A;
